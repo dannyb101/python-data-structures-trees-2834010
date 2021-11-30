@@ -4,6 +4,19 @@ class Node:
         self.left = None
         self.right = None
 
+    def search(self, target):
+        if self.data == target:
+            print("Found it!")
+            return self
+        
+        if self.left and self.data > target:
+            return self.left.search(target)
+
+        if self.right and self.data < target:
+            return self.right.search(target)
+
+        print("Value not in tree")
+
 class Tree:
     def __init__(self, root, name=''):
         self.root = root
@@ -22,3 +35,8 @@ node.right.left = Node(13)
 node.right.right = Node(10000)
 
 myTree = Tree(node, 'Ryan\'s Tree')
+
+found = myTree.root.search(10000)
+
+print(found)
+
